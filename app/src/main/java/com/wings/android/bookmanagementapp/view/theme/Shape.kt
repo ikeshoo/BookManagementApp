@@ -1,4 +1,4 @@
-package com.wings.android.bookmanagementapp.ui.theme
+package com.wings.android.bookmanagementapp.view.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

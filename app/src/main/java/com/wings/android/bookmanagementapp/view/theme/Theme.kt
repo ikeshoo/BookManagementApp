@@ -1,4 +1,4 @@
-package com.wings.android.bookmanagementapp.ui.theme
+package com.wings.android.bookmanagementapp.view.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
