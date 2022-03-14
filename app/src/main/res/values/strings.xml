@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BookManagementApp</string>
+
+    <!-- BottomBar -->
+    <string name="bottom_bar_shelf">本棚</string>
+    <string name="bottom_bar_search">検索</string>
 </resources>
