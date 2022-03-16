@@ -16,6 +16,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.wings.android.bookmanagementapp.view.model.BottomBarItem
 import com.wings.android.bookmanagementapp.view.theme.BookManagementAppTheme
@@ -60,7 +62,12 @@ fun BottomBar() {
             BottomNavigationItem(
                 selected = selectedItem == index,
                 onClick = { selectedItem = index },
-                icon = Icon(painter = item.iconRes, contentDescription = item.textRes)
+                icon = {
+                    Icon(
+                        painter = painterResource(id = item.iconRes),
+                        contentDescription = stringResource(id = item.textRes)
+                    )
+                }
             )
         }
     }
