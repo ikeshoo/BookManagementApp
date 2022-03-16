@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,16 +59,20 @@ fun BottomBar() {
     var selectedItem by remember { mutableStateOf(0) }
     val items = listOf(BottomBarItem.BookShelf, BottomBarItem.Search)
     BottomNavigation() {
-        items.forEachIndexed{ index, item ->
+        items.forEachIndexed { index, item ->
             BottomNavigationItem(
                 selected = selectedItem == index,
                 onClick = { selectedItem = index },
+                label = { Text(text = stringResource(id = item.textRes)) },
                 icon = {
                     Icon(
                         painter = painterResource(id = item.iconRes),
                         contentDescription = stringResource(id = item.textRes)
                     )
-                }
+                },
+                alwaysShowLabel = true,
+                selectedContentColor = Color.Black,
+                unselectedContentColor = Color.Black.copy(alpha = 0.3f)
             )
         }
     }
