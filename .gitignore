@@ -1,12 +1,15 @@
 *.iml
-.gradle
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+
+# IntelliJ
+.idea/
+
+# 元からあった
 .DS_Store
 /build
 /captures
