@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.wings.android.bookmanagementapp.view.model.AppScreens
@@ -46,7 +47,11 @@ fun BookManagementApp() {
                 screens = allScreens,
                 currentScreen = currentScreen,
                 onTabSelected = { screen ->
-                    navController.navigate(screen.screenRoute)
+                    navController.navigate(screen.screenRoute) {
+                        popUpTo(navController.graph.findStartDestination().id)
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 }
             ) }
         ) {
