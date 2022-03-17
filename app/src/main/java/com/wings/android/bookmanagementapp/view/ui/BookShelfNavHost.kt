@@ -7,7 +7,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.wings.android.bookmanagementapp.view.model.BottomBarItem
+import com.wings.android.bookmanagementapp.view.model.AppScreens
 
 @Composable
 fun BookShelfNavHost(
@@ -16,20 +16,20 @@ fun BookShelfNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = BottomBarItem.BookShelf.screenRoute,
+        startDestination = AppScreens.BookShelf.screenRoute,
         modifier = modifier
     ) {
         // ToDo: 画面の中身は暫定。正しいレイアウトを作成する。
-        composable(BottomBarItem.BookShelf.screenRoute) {
-            Text(text = stringResource(id = BottomBarItem.BookShelf.textRes))
+        composable(AppScreens.BookShelf.screenRoute) {
+            Text(text = stringResource(id = AppScreens.BookShelf.textRes))
         }
 
-        composable(BottomBarItem.Search.screenRoute) {
-            Text(text = stringResource(id = BottomBarItem.Search.textRes))
+        composable(AppScreens.Search.screenRoute) {
+            Text(text = stringResource(id = AppScreens.Search.textRes))
         }
 
-        composable(BottomBarItem.Ranking.screenRoute) {
-            Text(text = stringResource(id = BottomBarItem.Ranking.textRes))
+        composable(AppScreens.Ranking.screenRoute) {
+            Text(text = stringResource(id = AppScreens.Ranking.textRes))
         }
     }
 }
