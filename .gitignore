@@ -9,6 +9,10 @@ build/
 # IntelliJ
 .idea/
 
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/misc.xml
+
 # 元からあった
 .DS_Store
 /build
