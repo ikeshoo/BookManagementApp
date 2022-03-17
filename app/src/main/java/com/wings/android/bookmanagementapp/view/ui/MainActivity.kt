@@ -12,15 +12,14 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.wings.android.bookmanagementapp.view.model.BottomBarItem
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.wings.android.bookmanagementapp.view.model.AppScreens
 import com.wings.android.bookmanagementapp.view.theme.BookManagementAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,11 +34,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BookManagementApp() {
     BookManagementAppTheme {
+        val allScreens = AppScreens.ALL
+        val navController = rememberNavController()
+        val backStackEntry = navController.currentBackStackEntryAsState()
+        val currentScreen = AppScreens.fromRoute(
+            backStackEntry.value?.destination?.route
+        )
         Scaffold(
             topBar = { TopBar() },
-            bottomBar = { BottomBar() }
+            bottomBar = { BottomBar(
+                screens = allScreens,
+                currentScreen = currentScreen,
+                onTabSelected = { screen ->
+                    navController.navigate(screen.screenRoute)
+                }
+            ) }
         ) {
-
+            BookShelfNavHost(navController = navController)
         }
     }
 }
@@ -55,19 +66,21 @@ fun TopBar() {
 }
 
 @Composable
-fun BottomBar() {
-    var selectedItem by remember { mutableStateOf(0) }
-    val items = listOf(BottomBarItem.BookShelf, BottomBarItem.Search)
+fun BottomBar(
+    screens: List<AppScreens>,
+    currentScreen: AppScreens,
+    onTabSelected: (AppScreens) -> Unit
+) {
     BottomNavigation() {
-        items.forEachIndexed { index, item ->
+        screens.forEach { screen ->
             BottomNavigationItem(
-                selected = selectedItem == index,
-                onClick = { selectedItem = index },
-                label = { Text(text = stringResource(id = item.textRes)) },
+                selected = currentScreen == screen,
+                onClick = { onTabSelected(screen) },
+                label = { Text(text = stringResource(id = screen.textRes)) },
                 icon = {
                     Icon(
-                        painter = painterResource(id = item.iconRes),
-                        contentDescription = stringResource(id = item.textRes)
+                        painter = painterResource(id = screen.iconRes),
+                        contentDescription = stringResource(id = screen.textRes)
                     )
                 },
                 alwaysShowLabel = true,
