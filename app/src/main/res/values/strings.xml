@@ -4,4 +4,5 @@
     <!-- BottomBar -->
     <string name="bottom_bar_shelf">本棚</string>
     <string name="bottom_bar_search">検索</string>
+    <string name="bottom_bar_ranking">ランキング</string>
 </resources>

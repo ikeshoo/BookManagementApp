@@ -27,5 +27,9 @@ fun BookShelfNavHost(
         composable(BottomBarItem.Search.screenRoute) {
             Text(text = stringResource(id = BottomBarItem.Search.textRes))
         }
+
+        composable(BottomBarItem.Ranking.screenRoute) {
+            Text(text = stringResource(id = BottomBarItem.Ranking.textRes))
+        }
     }
 }

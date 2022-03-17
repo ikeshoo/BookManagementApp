@@ -23,6 +23,10 @@ sealed class BottomBarItem(
         "search"
     )
 
-    // ToDo: もう一つくらい追加する？
+    object Ranking : BottomBarItem(
+        R.string.bottom_bar_ranking,
+        R.drawable.ic_baseline_military_tech_24,
+        "ranking"
+    )
 }
 
