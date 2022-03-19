@@ -24,11 +24,12 @@ import com.wings.android.bookmanagementapp.view.model.Book
 
 // ToDo: 引数は暫定
 @Composable
-fun BookShelfScreen(books: List<Book>) {
+fun BookShelfScreen() {
+    val dummyBooks = createDummyList()
     LazyColumn(
         contentPadding = PaddingValues(vertical = 4.dp)
     ) {
-        items(books) { book ->
+        items(dummyBooks) { book ->
             BookShelfItem(book = book)
         }
     }
@@ -55,7 +56,7 @@ fun BookShelfItem(book: Book) {
                 contentScale = ContentScale.Fit,
                 contentDescription = null
             )
-            
+
             Column(
                 modifier = Modifier
                     .align(alignment = Alignment.CenterVertically)
@@ -68,7 +69,8 @@ fun BookShelfItem(book: Book) {
                 )
                 Text(
                     modifier = modifier,
-                    text = book.author)
+                    text = book.author
+                )
             }
         }
     }
@@ -77,7 +79,7 @@ fun BookShelfItem(book: Book) {
 @Preview(showBackground = true)
 @Composable
 fun BookShelfPreview() {
-    BookShelfScreen(books = createDummyList())
+    BookShelfScreen()
 }
 
 @Preview(showBackground = true)
