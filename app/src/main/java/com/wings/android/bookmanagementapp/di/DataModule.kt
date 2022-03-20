@@ -1,7 +1,7 @@
 package com.wings.android.bookmanagementapp.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.wings.android.bookmanagementapp.data.source.remote.RankingApi
+import com.wings.android.bookmanagementapp.data.source.remote.RaktenApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +23,7 @@ object DataModule {
         return OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.HEADERS
+                    level = HttpLoggingInterceptor.Level.BODY
                 }
             )
             .build()
@@ -34,7 +34,7 @@ object DataModule {
     fun provideRankingRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit {
-        val baseUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628/"
+        val baseUrl = "https://app.rakuten.co.jp/"
         val jsonSetting = Json {
             prettyPrint = true
             ignoreUnknownKeys = true
@@ -49,9 +49,9 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun provideRankingApi(
+    fun provideRaktenApi(
         retrofit: Retrofit
-    ): RankingApi {
-        return retrofit.create(RankingApi::class.java)
+    ): RaktenApi {
+        return retrofit.create(RaktenApi::class.java)
     }
 }

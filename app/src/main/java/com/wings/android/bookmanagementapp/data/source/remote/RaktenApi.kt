@@ -4,9 +4,9 @@ import com.wings.android.bookmanagementapp.data.source.remote.entity.RankingResp
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RankingApi {
+interface RaktenApi {
 
-    @GET("")
+    @GET("services/api/IchibaItem/Ranking/20170628/")
     suspend fun fetchRanking(
         @Query(value = "format") format: String = "json",
         @Query(value = "formatVersion") formatVersion: Int = 2,
