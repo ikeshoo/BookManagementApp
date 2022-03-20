@@ -1,6 +1,7 @@
 package com.wings.android.bookmanagementapp.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.wings.android.bookmanagementapp.data.source.remote.RankingApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +34,7 @@ object DataModule {
     fun provideRankingRetrofit(
         okHttpClient: OkHttpClient
     ): Retrofit {
-        val baseUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628"
+        val baseUrl = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628/"
         val jsonSetting = Json {
             prettyPrint = true
             ignoreUnknownKeys = true
@@ -44,5 +45,13 @@ object DataModule {
             .client(okHttpClient)
             .addConverterFactory(jsonSetting.asConverterFactory("application/json".toMediaType()))
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRankingApi(
+        retrofit: Retrofit
+    ): RankingApi {
+        return retrofit.create(RankingApi::class.java)
     }
 }
