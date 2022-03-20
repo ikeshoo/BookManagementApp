@@ -1,5 +1,6 @@
 package com.wings.android.bookmanagementapp.data.source.remote
 
+import com.wings.android.bookmanagementapp.data.source.remote.entity.RankingResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,5 +13,5 @@ interface RankingApi {
         @Query(value = "carrier") carrire: Int = 1,
         @Query(value = "applicationId") applicationId: String ="1008739980345503296",
         @Query(value = "genreId") genreId: Long
-    )
+    ): RankingResponse
 }
