@@ -10,6 +10,8 @@ buildscript {
         kotlin_serialization_plugin_version = '1.6.10'
         kotlin_serialization_conveter_version = '0.8.0'
         okhttp_version = '4.9.3'
+        viewMode_compose_version = '2.5.0-alpha04'
+        hilt_navigation_version = '1.0.0'
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"
