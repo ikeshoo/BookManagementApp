@@ -5,4 +5,14 @@
     <string name="bottom_bar_shelf">本棚</string>
     <string name="bottom_bar_search">検索</string>
     <string name="bottom_bar_ranking">ランキング</string>
+    
+    <!-- Ranking -->
+    <string name="ranking_id_general">総合</string>
+    <string name="ranking_id_novel">小説・エッセイ</string>
+    <string name="ranking_id_comic">マンガ</string>
+    <string name="ranking_id_magazine">雑誌</string>
+    <string name="ranking_id_language_study">語学・参考書</string>
+    <string name="ranking_id_qualification">資格・検定</string>
+    <string name="ranking_id_pc">PC・システム開発</string>
+    <string name="ranking_id_business">ビジネス・経済</string>
 </resources>
