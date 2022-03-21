@@ -21,8 +21,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.wings.android.bookmanagementapp.view.model.CategoryRanking
-import com.wings.android.bookmanagementapp.view.model.SimplifiedBook
+import com.wings.android.bookmanagementapp.view.model.ranking.CategoryRanking
+import com.wings.android.bookmanagementapp.view.model.ranking.RankingBook
 
 // ToDo: 細かいレイアウトは後で修正する
 @Composable
@@ -41,7 +41,7 @@ fun RankingColumn(rankings: List<CategoryRanking>) {
 }
 
 @Composable
-fun RankingRow(books: List<SimplifiedBook>) {
+fun RankingRow(books: List<RankingBook>) {
     LazyRow(
         contentPadding = PaddingValues(8.dp),
         horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -53,7 +53,7 @@ fun RankingRow(books: List<SimplifiedBook>) {
 }
 
 @Composable
-fun RankingItem(item: SimplifiedBook) {
+fun RankingItem(item: RankingBook) {
     Card(
         modifier = Modifier
             .wrapContentWidth()
@@ -101,7 +101,7 @@ fun PreviewRankingRow() {
 @Composable
 fun PreviewRankingItem() {
     RankingItem(
-        item = SimplifiedBook(
+        item = RankingBook(
             name = "name",
             author = "author",
             imageUlr = "imageUrl"
