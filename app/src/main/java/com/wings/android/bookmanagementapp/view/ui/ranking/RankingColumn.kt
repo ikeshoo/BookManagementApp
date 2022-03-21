@@ -79,7 +79,7 @@ fun RankingItem(item: RankingBook) {
             )
             Text(
                 modifier = textModifier,
-                text = item.author
+                text = item.rank
             )
         }
     }
@@ -103,7 +103,7 @@ fun PreviewRankingItem() {
     RankingItem(
         item = RankingBook(
             name = "name",
-            author = "author",
+            rank = "rank",
             imageUlr = "imageUrl"
         )
     )
