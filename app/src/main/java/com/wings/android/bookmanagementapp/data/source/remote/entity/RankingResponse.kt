@@ -1,5 +1,6 @@
 package com.wings.android.bookmanagementapp.data.source.remote.entity
 
+import com.wings.android.bookmanagementapp.extension.toHttps
 import com.wings.android.bookmanagementapp.view.model.ranking.CategoryRanking
 import com.wings.android.bookmanagementapp.view.model.ranking.RankingBook
 import kotlinx.serialization.SerialName
@@ -19,7 +20,7 @@ data class RankingResponse(
                 RankingBook(
                     name = ranking.itemName,
                     rank = ranking.rank.toString(),
-                    imageUlr = ranking.mediumImageUrls.firstOrNull()
+                    imageUlr = ranking.mediumImageUrls.firstOrNull()?.toHttps()
                 )
             }
         )

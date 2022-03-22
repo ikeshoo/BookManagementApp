@@ -65,8 +65,8 @@ fun RankingItem(item: RankingBook) {
         ) {
             Image(
                 modifier = Modifier
-                    .height(80.dp)
-                    .width(80.dp),
+                    .height(120.dp)
+                    .width(120.dp),
                 painter = rememberAsyncImagePainter(item.imageUlr),
                 contentScale = ContentScale.Fit,
                 contentDescription = null
