@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
@@ -63,23 +64,26 @@ fun RankingItem(item: RankingBook) {
                 .wrapContentSize()
                 .padding(8.dp)
         ) {
+            val modifier = Modifier.align(alignment = Alignment.CenterHorizontally)
+            Text(
+                modifier = modifier,
+                text = item.rank
+            )
             Image(
-                modifier = Modifier
+                modifier = modifier
                     .height(120.dp)
                     .width(120.dp),
                 painter = rememberAsyncImagePainter(item.imageUlr),
                 contentScale = ContentScale.Fit,
                 contentDescription = null
             )
-
-            val textModifier = Modifier.align(alignment = Alignment.CenterHorizontally)
             Text(
-                modifier = textModifier,
-                text = item.name
-            )
-            Text(
-                modifier = textModifier,
-                text = item.rank
+                modifier = modifier
+                    .width(120.dp),
+                text = item.name,
+                softWrap = true,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }
