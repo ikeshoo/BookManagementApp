@@ -2,6 +2,8 @@ package com.wings.android.bookmanagementapp.di
 
 import com.wings.android.bookmanagementapp.data.repository.RankingRepository
 import com.wings.android.bookmanagementapp.data.repository.RankingRepositoryImpl
+import com.wings.android.bookmanagementapp.data.repository.SearchRepository
+import com.wings.android.bookmanagementapp.data.repository.SearchRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,4 +16,9 @@ abstract class RepositoryModule {
     abstract fun bindRankingRepository(
         rankingRepositoryImpl: RankingRepositoryImpl
     ): RankingRepository
+
+    @Binds
+    abstract fun bindSearchRepository(
+        searchRepositoryImpl: SearchRepositoryImpl
+    ): SearchRepository
 }
