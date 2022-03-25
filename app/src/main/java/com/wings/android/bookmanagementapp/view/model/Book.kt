@@ -4,13 +4,19 @@ package com.wings.android.bookmanagementapp.view.model
 data class Book(
     val title: String,
     val author: String,
-    val imageUrl: String?
+    val imageUrl: String?,
+    val isbn: String,
+    val size: String,
+    val caption: String,
 ) {
     companion object {
         val TEST = Book(
             title = "test",
             author = "test",
-            imageUrl = "https://cdn-ak.f.st-hatena.com/images/fotolife/k/kuri_megane/20190901/20190901230015.jpg"
+            imageUrl = "https://cdn-ak.f.st-hatena.com/images/fotolife/k/kuri_megane/20190901/20190901230015.jpg",
+            isbn = "test",
+            size = "test",
+            caption = "test"
         )
     }
 }

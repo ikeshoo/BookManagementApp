@@ -90,14 +90,6 @@ fun BookShelfItemPreview() {
 
 private fun createDummyList(): List<Book> =
     listOf(
-        Book(
-            title = "Title1",
-            author = "Author1",
-            imageUrl = "https://cdn-ak.f.st-hatena.com/images/fotolife/k/kuri_megane/20190901/20190901230015.jpg"
-        ),
-        Book(
-            title = "Title2",
-            author = "Author2",
-            imageUrl = "https://cdn-ak.f.st-hatena.com/images/fotolife/k/kuri_megane/20190901/20190901230015.jpg"
-        ),
+        Book.TEST,
+        Book.TEST,
     )
