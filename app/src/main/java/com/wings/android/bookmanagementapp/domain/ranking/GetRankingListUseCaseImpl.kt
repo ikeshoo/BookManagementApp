@@ -10,7 +10,7 @@ import javax.inject.Inject
 class GetRankingListUseCaseImpl @Inject constructor(
     private val repository: RankingRepository
 ) : GetRankingListUseCase {
-    override fun execute(): Flow<List<CategoryRanking>> {
+    override fun invoke(): Flow<List<CategoryRanking>> {
         val idList = RankingId.values()
         val list = idList.map {
             repository.getRanking(it.id)

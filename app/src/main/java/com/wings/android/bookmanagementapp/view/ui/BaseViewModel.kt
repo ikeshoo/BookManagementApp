@@ -25,13 +25,12 @@ abstract class BaseViewModel() : ViewModel() {
     val failure: StateFlow<Failure?>
         get() = _failure
 
-    fun <T> execute(
-        flow: Flow<T>,
+    fun <T> Flow<T>.execute(
         onSuccess: ((T) -> Unit) = {},
         retry: () -> Unit
     ) {
         viewModelScope.launch {
-            flow.flowOn(Dispatchers.IO)
+            flowOn(Dispatchers.IO)
                 .onStart { _loading.value = Loading(isLoading = true) }
                 .onCompletion { _loading.value = Loading(isLoading = false) }
                 .catch {

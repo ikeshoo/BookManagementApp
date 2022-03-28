@@ -1,8 +1,5 @@
 package com.wings.android.bookmanagementapp.view.ui.ranking
 
-import android.util.Log
-import com.wings.android.bookmanagementapp.data.repository.RankingRepository
-import com.wings.android.bookmanagementapp.data.source.remote.entity.Ranking
 import com.wings.android.bookmanagementapp.domain.ranking.GetRankingListUseCase
 import com.wings.android.bookmanagementapp.view.model.ranking.CategoryRanking
 import com.wings.android.bookmanagementapp.view.ui.BaseViewModel
@@ -13,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RankingViewModel @Inject constructor(
-    private val useCase: GetRankingListUseCase
+    private val getRankingListUseCase: GetRankingListUseCase
 ) : BaseViewModel() {
 
     private val _rankings = MutableStateFlow<List<CategoryRanking>>(emptyList())
@@ -21,8 +18,7 @@ class RankingViewModel @Inject constructor(
         get() = _rankings
 
     fun getRankings() {
-        execute(
-            flow = useCase.execute(),
+        getRankingListUseCase().execute(
             onSuccess = {
                 _rankings.value = it
             },
