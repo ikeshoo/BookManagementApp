@@ -32,7 +32,7 @@ class SearchByTitleUseCaseImpl @Inject constructor(
             Book(
                 title = searchResult.title,
                 author = searchResult.author,
-                imageUrl = searchResult.largeImageUrl.toHttps(),
+                imageUrl = searchResult.largeImageUrl,
                 isbn = searchResult.isbn,
                 size = searchResult.size,
                 caption = searchResult.itemCaption
