@@ -1,10 +1,18 @@
 package com.wings.android.bookmanagementapp.di
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.dataStore
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.wings.android.bookmanagementapp.data.source.local.PreferenceLocal
+import com.wings.android.bookmanagementapp.data.source.local.PreferenceLocalImpl
 import com.wings.android.bookmanagementapp.data.source.remote.RaktenApi
+import com.wings.android.bookmanagementapp.util.BookSerializer
+import com.wings.android.bookmanagementapp.view.model.BookList
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -16,6 +24,26 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
+    // DataStoreの設定
+    private const val JSON_FILE = "book_list.json"
+    private val Context.bookDataStore: DataStore<BookList> by dataStore(
+        fileName = JSON_FILE,
+        serializer = BookSerializer()
+    )
+
+    @Singleton
+    @Provides
+    fun provideDataStore(@ApplicationContext context: Context): DataStore<BookList> {
+        return context.bookDataStore
+    }
+
+    @Singleton
+    @Provides
+    fun providePreferenceLocal(dataStore: DataStore<BookList>): PreferenceLocal {
+        return PreferenceLocalImpl(dataStore)
+    }
+
 
     @Singleton
     @Provides

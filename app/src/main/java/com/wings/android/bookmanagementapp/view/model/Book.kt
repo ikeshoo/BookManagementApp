@@ -1,6 +1,9 @@
 package com.wings.android.bookmanagementapp.view.model
 
+import kotlinx.serialization.Serializable
+
 // ToDo: 必要なパラメータを追加していく
+@Serializable
 data class Book(
     val title: String,
     val author: String,
@@ -17,6 +20,17 @@ data class Book(
             isbn = "test",
             size = "test",
             caption = "test"
+        )
+    }
+}
+
+@Serializable
+data class BookList(
+    val value: List<Book>
+) {
+    companion object {
+        val Default = BookList(
+            value = emptyList()
         )
     }
 }
