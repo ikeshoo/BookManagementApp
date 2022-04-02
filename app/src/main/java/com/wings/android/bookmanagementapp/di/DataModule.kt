@@ -7,7 +7,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.wings.android.bookmanagementapp.data.source.local.PreferenceLocal
 import com.wings.android.bookmanagementapp.data.source.local.PreferenceLocalImpl
 import com.wings.android.bookmanagementapp.data.source.remote.RaktenApi
-import com.wings.android.bookmanagementapp.util.BookSerializer
+import com.wings.android.bookmanagementapp.util.BookListSerializer
 import com.wings.android.bookmanagementapp.view.model.BookList
 import dagger.Module
 import dagger.Provides
@@ -29,7 +29,7 @@ object DataModule {
     private const val JSON_FILE = "book_list.json"
     private val Context.bookDataStore: DataStore<BookList> by dataStore(
         fileName = JSON_FILE,
-        serializer = BookSerializer()
+        serializer = BookListSerializer
     )
 
     @Singleton

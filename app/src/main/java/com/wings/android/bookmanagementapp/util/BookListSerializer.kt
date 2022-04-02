@@ -11,14 +11,14 @@ import kotlinx.serialization.json.Json
 import java.io.InputStream
 import java.io.OutputStream
 
-class BookSerializer(
+object BookListSerializer : Serializer<BookList> {
+    override val defaultValue: BookList
+        get() = BookList.Default
+
     private val stringFormat: StringFormat = Json {
         ignoreUnknownKeys = true
         encodeDefaults = true
     }
-) : Serializer<BookList> {
-    override val defaultValue: BookList
-        get() = BookList.Default
 
     override suspend fun readFrom(input: InputStream): BookList {
         try {
