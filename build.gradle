@@ -13,6 +13,7 @@ buildscript {
         viewMode_compose_version = '2.5.0-alpha04'
         hilt_navigation_version = '1.0.0'
         data_store_version = '1.0.0'
+        imumtable_collection_version = '0.3.5'
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"

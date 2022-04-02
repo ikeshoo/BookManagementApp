@@ -1,5 +1,7 @@
 package com.wings.android.bookmanagementapp.view.model
 
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.Serializable
 
 // ToDo: 必要なパラメータを追加していく
@@ -26,11 +28,11 @@ data class Book(
 
 @Serializable
 data class BookList(
-    val value: List<Book>
+    val value: PersistentList<Book>
 ) {
     companion object {
         val Default = BookList(
-            value = emptyList()
+            value = persistentListOf()
         )
     }
 }
