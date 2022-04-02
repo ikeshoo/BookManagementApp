@@ -19,4 +19,11 @@ class SearchRepositoryImpl @Inject constructor(
             emit(response)
         }
     }
+
+    override fun searchByIsbn(isbn: String): Flow<SearchResponse> {
+        return flow {
+            val response = raktenApi.searchByIsbn(isbn)
+            emit(response)
+        }
+    }
 }

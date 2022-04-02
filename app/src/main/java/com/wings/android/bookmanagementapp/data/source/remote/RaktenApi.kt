@@ -25,4 +25,14 @@ interface RaktenApi {
         @Query(value = "carrier") carrire: Int = 1,
         @Query(value = "applicationId") applicationId: String ="1008739980345503296"
     ): SearchResponse
+
+    @GET("services/api/BooksBook/Search/20170404/")
+    suspend fun searchByIsbn(
+        @Query(value = "isbnjan")  isbnCode: String,
+        @Query(value = "page") page: Int = 1,
+        @Query(value = "format") format: String = "json",
+        @Query(value = "formatVersion") formatVersion: Int = 2,
+        @Query(value = "carrier") carrire: Int = 1,
+        @Query(value = "applicationId") applicationId: String ="1008739980345503296"
+    ): SearchResponse
 }

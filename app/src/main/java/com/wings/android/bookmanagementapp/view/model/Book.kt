@@ -23,6 +23,15 @@ data class Book(
             size = "test",
             caption = "test"
         )
+
+        val Empty = Book(
+            title = "",
+            author = "",
+            imageUrl = null,
+            isbn = "",
+            size = "",
+            caption = ""
+        )
     }
 }
 

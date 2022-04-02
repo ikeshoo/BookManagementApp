@@ -2,6 +2,7 @@ package com.wings.android.bookmanagementapp.domain.search
 
 import com.wings.android.bookmanagementapp.data.repository.SearchRepository
 import com.wings.android.bookmanagementapp.data.source.remote.entity.SearchResult
+import com.wings.android.bookmanagementapp.data.source.remote.entity.toBookList
 import com.wings.android.bookmanagementapp.extension.toHttps
 import com.wings.android.bookmanagementapp.view.model.Book
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,19 +25,6 @@ class SearchByTitleUseCaseImpl @Inject constructor(
                 val list = response.items.toBookList()
                 emit(list)
             }
-        }
-    }
-
-    private fun List<SearchResult>.toBookList(): List<Book> {
-        return this.map { searchResult ->
-            Book(
-                title = searchResult.title,
-                author = searchResult.author,
-                imageUrl = searchResult.largeImageUrl,
-                isbn = searchResult.isbn,
-                size = searchResult.size,
-                caption = searchResult.itemCaption
-            )
         }
     }
 }

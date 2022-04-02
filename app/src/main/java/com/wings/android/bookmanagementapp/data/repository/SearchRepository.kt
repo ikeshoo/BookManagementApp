@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface SearchRepository {
 
     fun searchByTitle(title: String, page: Int): Flow<SearchResponse>
+    fun searchByIsbn(isbn: String): Flow<SearchResponse>
 }
