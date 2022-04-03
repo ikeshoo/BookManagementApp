@@ -20,11 +20,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.wings.android.bookmanagementapp.view.ui.common.BookColumn
 
 @Composable
-fun SearchScreen(viewModel: SearchViewModel = hiltViewModel()) {
+fun SearchScreen(
+    moveDetail: (String) -> Unit,
+    viewModel: SearchViewModel = hiltViewModel()
+) {
     val books by viewModel.books.collectAsState()
     Column() {
         SearchView(onSearch = { viewModel.search(it) })
-        BookColumn(books = books)
+        BookColumn(
+            books = books,
+            onClick = moveDetail
+        )
     }
 }
 
@@ -54,7 +60,9 @@ fun SearchView(
 @Preview(showBackground = true)
 @Composable
 fun PreviewSearchScreen() {
-    SearchScreen()
+    SearchScreen(
+        moveDetail = { }
+    )
 }
 
 @Preview(showBackground = true)

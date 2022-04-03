@@ -19,10 +19,11 @@ sealed class AppScreens(
         )
 
         fun fromRoute(route: String?): AppScreens {
-            return when (route?.substringBefore("/")) {
+            return when (route) {
                 BookShelf.screenRoute, null -> BookShelf
                 Search.screenRoute -> Search
                 Ranking.screenRoute -> Ranking
+                Detail.screenRoute -> Detail
                 else -> throw IllegalArgumentException("Route $route is not correct")
             }
         }
@@ -44,6 +45,12 @@ sealed class AppScreens(
         R.string.bottom_bar_ranking,
         R.drawable.ic_baseline_military_tech_24,
         "ranking"
+    )
+
+    object Detail : AppScreens(
+        0,
+        0,
+        "detail/{isbnCode}"
     )
 }
 

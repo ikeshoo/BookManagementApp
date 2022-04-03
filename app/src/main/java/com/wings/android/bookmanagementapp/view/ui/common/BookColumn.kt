@@ -1,6 +1,7 @@
 package com.wings.android.bookmanagementapp.view.ui.common
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,21 +21,32 @@ import coil.compose.rememberAsyncImagePainter
 import com.wings.android.bookmanagementapp.view.model.Book
 
 @Composable
-fun BookColumn(books: List<Book>) {
+fun BookColumn(
+    books: List<Book>,
+    onClick: (String) -> Unit
+) {
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(books) { book ->
-            BookItem(book = book)
+            BookItem(
+                book = book,
+                onClick = onClick
+            )
         }
     }
 }
 
 @Composable
-fun BookItem(book: Book) {
+fun BookItem(
+    book: Book,
+    onClick: (String) -> Unit,
+) {
     Card(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick(book.isbn) }
     ) {
         Row() {
             Image(
