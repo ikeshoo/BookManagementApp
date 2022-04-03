@@ -11,7 +11,6 @@ data class Book(
     val author: String,
     val imageUrl: String?,
     val isbn: String,
-    val size: String,
     val caption: String,
 ) {
     companion object {
@@ -20,7 +19,6 @@ data class Book(
             author = "test",
             imageUrl = "https://cdn-ak.f.st-hatena.com/images/fotolife/k/kuri_megane/20190901/20190901230015.jpg",
             isbn = "test",
-            size = "test",
             caption = "test"
         )
 
@@ -29,7 +27,6 @@ data class Book(
             author = "",
             imageUrl = null,
             isbn = "",
-            size = "",
             caption = ""
         )
     }

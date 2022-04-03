@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SearchResult(
     val author: String,
-    val authorKana: String,
     val isbn: String,
     val itemCaption: String,
     val itemUrl: String,
@@ -16,14 +15,8 @@ data class SearchResult(
     val reviewAverage: String,
     val reviewCount: Int,
     val salesDate: String,
-    val seriesName: String,
-    val seriesNameKana: String,
-    val size: String,
     val smallImageUrl: String,
-    val subTitle: String,
-    val subTitleKana: String,
     val title: String,
-    val titleKana: String
 )
 
 fun List<SearchResult>.toBookList(): List<Book> {
@@ -33,7 +26,6 @@ fun List<SearchResult>.toBookList(): List<Book> {
             author = searchResult.author,
             imageUrl = searchResult.largeImageUrl,
             isbn = searchResult.isbn,
-            size = searchResult.size,
             caption = searchResult.itemCaption
         )
     }

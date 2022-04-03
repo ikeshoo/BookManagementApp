@@ -26,7 +26,7 @@ interface RaktenApi {
         @Query(value = "applicationId") applicationId: String ="1008739980345503296"
     ): SearchResponse
 
-    @GET("services/api/BooksBook/Search/20170404/")
+    @GET("services/api/BooksTotal/Search/20170404/")
     suspend fun searchByIsbn(
         @Query(value = "isbnjan")  isbnCode: String,
         @Query(value = "page") page: Int = 1,
