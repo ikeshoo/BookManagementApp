@@ -14,6 +14,7 @@ buildscript {
         hilt_navigation_version = '1.0.0'
         data_store_version = '1.0.0'
         imumtable_collection_version = '0.3.5'
+        room_version = '2.4.2'
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"
