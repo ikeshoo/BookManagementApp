@@ -2,8 +2,6 @@ package com.wings.android.bookmanagementapp.view.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.collections.immutable.PersistentList
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.Serializable
 
 // ToDo: 必要なパラメータを追加していく
@@ -32,17 +30,6 @@ data class Book(
             imageUrl = null,
             isbn = 0L,
             caption = ""
-        )
-    }
-}
-
-@Serializable
-data class BookList(
-    val value: PersistentList<Book>
-) {
-    companion object {
-        val Default = BookList(
-            value = persistentListOf()
         )
     }
 }
