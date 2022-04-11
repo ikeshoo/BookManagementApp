@@ -25,7 +25,7 @@ fun List<SearchResult>.toBookList(): List<Book> {
             title = searchResult.title,
             author = searchResult.author,
             imageUrl = searchResult.largeImageUrl,
-            isbn = searchResult.isbn,
+            isbn = searchResult.isbn.toLong(),
             caption = searchResult.itemCaption
         )
     }

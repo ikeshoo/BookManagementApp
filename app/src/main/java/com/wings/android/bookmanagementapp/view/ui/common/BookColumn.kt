@@ -23,7 +23,7 @@ import com.wings.android.bookmanagementapp.view.model.Book
 @Composable
 fun BookColumn(
     books: List<Book>,
-    onClick: (String) -> Unit
+    onClick: (Long) -> Unit
 ) {
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -41,7 +41,7 @@ fun BookColumn(
 @Composable
 fun BookItem(
     book: Book,
-    onClick: (String) -> Unit,
+    onClick: (Long) -> Unit,
 ) {
     Card(
         modifier = Modifier

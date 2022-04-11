@@ -21,7 +21,7 @@ import com.wings.android.bookmanagementapp.view.ui.common.BookColumn
 
 @Composable
 fun SearchScreen(
-    moveDetail: (String) -> Unit,
+    moveDetail: (Long) -> Unit,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val books by viewModel.books.collectAsState()
