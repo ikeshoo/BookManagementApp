@@ -1,7 +1,7 @@
 package com.wings.android.bookmanagementapp.di
 
-import com.wings.android.bookmanagementapp.data.repository.LocalBookListRepository
-import com.wings.android.bookmanagementapp.data.repository.LocalBookListRepositoryImpl
+import com.wings.android.bookmanagementapp.data.repository.LocalBookRepository
+import com.wings.android.bookmanagementapp.data.repository.LocalBookRepositoryImpl
 import com.wings.android.bookmanagementapp.data.repository.RankingRepository
 import com.wings.android.bookmanagementapp.data.repository.RankingRepositoryImpl
 import com.wings.android.bookmanagementapp.data.repository.SearchRepository
@@ -26,6 +26,6 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindLocalBookListRepository(
-        localBookListRepositoryImpl: LocalBookListRepositoryImpl
-    ): LocalBookListRepository
+        localBookListRepositoryImpl: LocalBookRepositoryImpl
+    ): LocalBookRepository
 }

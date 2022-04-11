@@ -7,18 +7,21 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class LocalBookListRepositoryImpl @Inject constructor(
+class LocalBookRepositoryImpl @Inject constructor(
     private val bookDao: BookDao
-) : LocalBookListRepository {
+) : LocalBookRepository {
     override fun saveBook(book: Book): Flow<Signal> {
         return flow {
+            bookDao.insert(book)
             emit(Signal)
         }
     }
 
-    override fun getBookList(): Flow<Book> {
-        return flow {
-            emit(Book.TEST)
-        }
+    override fun getBookList(): Flow<List<Book>> {
+        return bookDao.getAll()
+    }
+
+    override fun getBook(isbn: Long): Flow<Book> {
+        return bookDao.getBook(isbn)
     }
 }

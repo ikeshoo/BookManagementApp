@@ -4,5 +4,5 @@ import com.wings.android.bookmanagementapp.view.model.Book
 import kotlinx.coroutines.flow.Flow
 
 interface GetBookListUseCase {
-    operator fun invoke(): Flow<Book>
+    operator fun invoke(isbn: Long): Flow<Book>
 }
