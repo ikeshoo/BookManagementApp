@@ -5,9 +5,9 @@ import com.wings.android.bookmanagementapp.view.model.Book
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetBookListUseCaseImpl @Inject constructor(
+class GetBookUseCaseImpl @Inject constructor(
     private val repository: LocalBookRepository
-) : GetBookListUseCase {
+) : GetBookUseCase {
     override fun invoke(isbn: Long): Flow<Book> {
         return repository.getBook(isbn)
     }

@@ -1,7 +1,7 @@
 package com.wings.android.bookmanagementapp.di
 
-import com.wings.android.bookmanagementapp.domain.detail.GetBookListUseCase
-import com.wings.android.bookmanagementapp.domain.detail.GetBookListUseCaseImpl
+import com.wings.android.bookmanagementapp.domain.detail.GetBookUseCase
+import com.wings.android.bookmanagementapp.domain.detail.GetBookUseCaseImpl
 import com.wings.android.bookmanagementapp.domain.detail.SaveBookUseCase
 import com.wings.android.bookmanagementapp.domain.detail.SaveBookUseCaseImpl
 import com.wings.android.bookmanagementapp.domain.detail.SearchByIsbnUseCase
@@ -35,8 +35,8 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindGetBookListUseCase(
-        getBookListUseCaseImpl: GetBookListUseCaseImpl
-    ): GetBookListUseCase
+        getBookListUseCaseImpl: GetBookUseCaseImpl
+    ): GetBookUseCase
 
     @Binds
     abstract fun bindSaveBookUseCase(
