@@ -3,7 +3,10 @@ package com.wings.android.bookmanagementapp.di
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
+import androidx.room.Room
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.wings.android.bookmanagementapp.data.source.local.BookDao
+import com.wings.android.bookmanagementapp.data.source.local.BookDatabase
 import com.wings.android.bookmanagementapp.data.source.local.PreferenceLocal
 import com.wings.android.bookmanagementapp.data.source.local.PreferenceLocalImpl
 import com.wings.android.bookmanagementapp.data.source.remote.RaktenApi
@@ -44,6 +47,21 @@ object DataModule {
         return PreferenceLocalImpl(dataStore)
     }
 
+    @Singleton
+    @Provides
+    fun provideBookDatabase(@ApplicationContext context: Context): BookDatabase {
+        return Room.databaseBuilder(
+            context,
+            BookDatabase::class.java,
+            "book_database"
+        ).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideBookDao(database: BookDatabase): BookDao {
+        return database.bookDao()
+    }
 
     @Singleton
     @Provides
