@@ -43,7 +43,10 @@ fun BookShelfNavHost(
             route = AppScreens.Detail.screenRoute,
             arguments = listOf(navArgument("isbnCode") { type = NavType.StringType })
         ) { navBackStackEntry ->  
-            DetailScreen(isbnCode = navBackStackEntry.arguments?.getString("isbnCode"))
+            DetailScreen(
+                isbnCode = navBackStackEntry.arguments?.getString("isbnCode"),
+                navController = navController
+            )
         }
     }
 }

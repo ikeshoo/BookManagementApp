@@ -1,6 +1,8 @@
 package com.wings.android.bookmanagementapp.view.ui.detail
 
+import com.wings.android.bookmanagementapp.domain.detail.SaveBookUseCase
 import com.wings.android.bookmanagementapp.domain.detail.SearchByIsbnUseCase
+import com.wings.android.bookmanagementapp.util.Signal
 import com.wings.android.bookmanagementapp.view.model.Book
 import com.wings.android.bookmanagementapp.view.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,7 +12,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val searchByIsbnUseCase: SearchByIsbnUseCase
+    private val searchByIsbnUseCase: SearchByIsbnUseCase,
+    private val saveBookUseCase: SaveBookUseCase
 ) : BaseViewModel() {
 
     private val _book = MutableStateFlow(Book.Empty)
@@ -23,6 +26,13 @@ class DetailViewModel @Inject constructor(
                 _book.value = it
             },
             retry = { getBook(isbnCode) }
+        )
+    }
+
+    fun saveBook() {
+        saveBookUseCase(_book.value).execute(
+            onSuccess = { /* NOP */ },
+            retry = { saveBook() }
         )
     }
 }
