@@ -10,6 +10,8 @@ import com.wings.android.bookmanagementapp.domain.ranking.GetRankingListUseCase
 import com.wings.android.bookmanagementapp.domain.ranking.GetRankingListUseCaseImpl
 import com.wings.android.bookmanagementapp.domain.search.SearchByTitleUseCase
 import com.wings.android.bookmanagementapp.domain.search.SearchByTitleUseCaseImpl
+import com.wings.android.bookmanagementapp.domain.shelf.GetBookListUseCase
+import com.wings.android.bookmanagementapp.domain.shelf.GetBookListUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -34,12 +36,17 @@ abstract class UseCaseModule {
     ): SearchByIsbnUseCase
 
     @Binds
-    abstract fun bindGetBookListUseCase(
-        getBookListUseCaseImpl: GetBookUseCaseImpl
+    abstract fun bindGetBookUseCase(
+        getBookUseCaseImpl: GetBookUseCaseImpl
     ): GetBookUseCase
 
     @Binds
     abstract fun bindSaveBookUseCase(
         saveBookUseCaseImpl: SaveBookUseCaseImpl
     ): SaveBookUseCase
+
+    @Binds
+    abstract fun bindGetBookListUseCase(
+        getBookListUseCaseImpl: GetBookListUseCaseImpl
+    ): GetBookListUseCase
 }
