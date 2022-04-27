@@ -2,6 +2,8 @@ package com.wings.android.bookmanagementapp.view.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.material3.IconButton
+import androidx.compose.runtime.Composable
 import com.wings.android.bookmanagementapp.R
 
 sealed class AppScreens(
@@ -9,7 +11,8 @@ sealed class AppScreens(
     val textRes: Int,
     @DrawableRes
     val iconRes: Int,
-    val screenRoute: String
+    val screenRoute: String,
+    val showNavIcon: Boolean
 ) {
     companion object {
         val ALL = listOf(
@@ -32,25 +35,29 @@ sealed class AppScreens(
     object BookShelf : AppScreens(
         R.string.bottom_bar_shelf,
         R.drawable.ic_baseline_menu_book_24,
-        "bookShelf"
+        "bookShelf",
+        false
     )
 
     object Search : AppScreens(
         R.string.bottom_bar_search,
         R.drawable.ic_baseline_search_24,
-        "search"
+        "search",
+        false
     )
 
     object Ranking : AppScreens(
         R.string.bottom_bar_ranking,
         R.drawable.ic_baseline_military_tech_24,
-        "ranking"
+        "ranking",
+        false
     )
 
     object Detail : AppScreens(
         R.string.detail_title,
         0,
-        "detail/{isbnCode}"
+        "detail/{isbnCode}",
+        true
     )
 }
 

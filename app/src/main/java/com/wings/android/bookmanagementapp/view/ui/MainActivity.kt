@@ -8,9 +8,12 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -46,7 +49,12 @@ fun BookManagementApp() {
             backStackEntry.value?.destination?.route
         )
         Scaffold(
-            topBar = { TopBar(currentScreen.textRes) },
+            topBar = {
+                TopBar(
+                    currentScreen.textRes,
+                    currentScreen.showNavIcon
+                ) { navController.popBackStack() }
+            },
             bottomBar = { BottomBar(
                 screens = allScreens,
                 currentScreen = currentScreen,
@@ -66,7 +74,11 @@ fun BookManagementApp() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(@StringRes titleRes: Int) {
+fun TopBar(
+    @StringRes titleRes: Int,
+    showNavIcon: Boolean,
+    popBuckStack: () -> Unit
+) {
     val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
     CenterAlignedTopAppBar(
         title = {
@@ -75,8 +87,27 @@ fun TopBar(@StringRes titleRes: Int) {
                 style = MaterialTheme.typography.titleLarge
             )
         },
+        navigationIcon = {
+            NavIcon(showNavIcon = showNavIcon) { popBuckStack() }
+        },
         scrollBehavior = scrollBehavior
     )
+}
+
+@Composable
+fun NavIcon(showNavIcon: Boolean, popBuckStack: () -> Unit) {
+    when (showNavIcon) {
+        true -> {
+            IconButton(onClick = { popBuckStack() }) {
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+            }
+        }
+        false -> {
+            IconButton(onClick = { }) {
+                // Nothing
+            }
+        }
+    }
 }
 
 @Composable
