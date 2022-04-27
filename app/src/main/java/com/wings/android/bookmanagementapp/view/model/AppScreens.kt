@@ -48,7 +48,7 @@ sealed class AppScreens(
     )
 
     object Detail : AppScreens(
-        0,
+        R.string.detail_title,
         0,
         "detail/{isbnCode}"
     )
