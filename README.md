@@ -11,7 +11,7 @@ MVVM + Repository + UseCase
 - Jetpack Compose
 - Coroutine Flow
 - Retrofit2
-- Data Store
+- Room
 - Dagger Hilt
 - Navigation
 
