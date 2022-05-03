@@ -26,7 +26,9 @@ fun BookShelfNavHost(
         modifier = modifier.padding(bottom = 48.dp)
     ) {
         composable(AppScreens.BookShelf.screenRoute) {
-            BookShelfScreen()
+            BookShelfScreen(
+                moveDetail = { navController.navigate("detail/$it") }
+            )
         }
 
         composable(AppScreens.Search.screenRoute) {

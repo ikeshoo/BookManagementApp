@@ -10,21 +10,23 @@ import com.wings.android.bookmanagementapp.view.ui.common.BookColumn
 
 @Composable
 fun BookShelfScreen(
+    moveDetail: (Long) -> Unit,
     viewModel: BookShelfViewModel = hiltViewModel()
 ) {
     val books by viewModel.books.collectAsState()
     LaunchedEffect(key1 = true) {
         viewModel.getBookList()
     }
-    // ToDo: 遷移時の処理を追加する
     BookColumn(
         books = books,
-        onClick = { }
+        onClick = moveDetail
     )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun BookShelfPreview() {
-    BookShelfScreen()
+    BookShelfScreen(
+        moveDetail = { }
+    )
 }
