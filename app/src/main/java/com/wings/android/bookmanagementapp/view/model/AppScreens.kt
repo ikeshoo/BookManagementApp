@@ -27,7 +27,7 @@ sealed class AppScreens(
                 Search.screenRoute -> Search
                 Ranking.screenRoute -> Ranking
                 Detail.screenRoute -> Detail
-                else -> throw IllegalArgumentException("Route $route is not correct")
+                else -> throw IllegalStateException("Route $route is not correct")
             }
         }
     }
