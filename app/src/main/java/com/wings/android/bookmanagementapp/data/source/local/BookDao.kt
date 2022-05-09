@@ -11,9 +11,9 @@ interface BookDao {
     @Insert
     suspend fun insert(book: Book): Long
 
-    @Query("SELECT * FROM book_table WHERE isbn = :isbn")
+    @Query("SELECT * FROM book_table2 WHERE isbn = :isbn")
     fun getBook(isbn: Long): Flow<Book>
 
-    @Query("SELECT * FROM book_table")
+    @Query("SELECT * FROM book_table2")
     fun getAll(): Flow<List<Book>>
 }

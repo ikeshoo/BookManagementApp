@@ -28,7 +28,7 @@ object DataModule {
         return Room.databaseBuilder(
             context,
             BookDatabase::class.java,
-            "book_database"
+            "book_database2"
         ).build()
     }
 
