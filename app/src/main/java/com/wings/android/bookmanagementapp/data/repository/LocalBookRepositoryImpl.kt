@@ -10,7 +10,7 @@ import javax.inject.Inject
 class LocalBookRepositoryImpl @Inject constructor(
     private val bookDao: BookDao
 ) : LocalBookRepository {
-    override fun saveBook(book: Book): Flow<Signal> {
+    override fun initializeBook(book: Book): Flow<Signal> {
         return flow {
             bookDao.insert(book)
             emit(Signal)
@@ -23,5 +23,12 @@ class LocalBookRepositoryImpl @Inject constructor(
 
     override fun getBook(isbn: Long): Flow<Book> {
         return bookDao.getBook(isbn)
+    }
+
+    override fun updateBook(book: Book): Flow<Signal> {
+        return flow {
+            bookDao.update(book)
+            emit(Signal)
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.wings.android.bookmanagementapp.data.source.local
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.wings.android.bookmanagementapp.view.model.Book
 import kotlinx.coroutines.flow.Flow
 
@@ -16,4 +17,7 @@ interface BookDao {
 
     @Query("SELECT * FROM book_table2")
     fun getAll(): Flow<List<Book>>
+
+    @Update
+    suspend fun update(book: Book)
 }

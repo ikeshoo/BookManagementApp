@@ -6,7 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalBookRepository {
 
-    fun saveBook(book: Book): Flow<Signal>
+    fun initializeBook(book: Book): Flow<Signal>
     fun getBookList(): Flow<List<Book>>
     fun getBook(isbn: Long): Flow<Book>
+    fun updateBook(book: Book): Flow<Signal>
 }
