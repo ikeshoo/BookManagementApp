@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -53,12 +53,16 @@ fun DetailScreen(
         )
         DetailText(modifier = centerModifier, text = book.title)
         DetailText(modifier = centerModifier, text = book.author)
+        OutlinedTextField(
+            value = book.review ?: "",
+            onValueChange = { viewModel.updateReview(it) }
+        )
         FloatingActionButton(
             modifier = Modifier.align(alignment = Alignment.End),
             onClick = {
-            viewModel.saveBook()
-            navController.popBackStack()
-        }) {
+                viewModel.saveBook()
+                navController.popBackStack()
+            }) {
             Icon(imageVector = Icons.Filled.Add, contentDescription = "")
         }
     }
