@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,11 +25,13 @@ import com.wings.android.bookmanagementapp.view.model.Book
 @Composable
 fun BookColumn(
     books: List<Book>,
-    onClick: (Long) -> Unit
+    onClick: (Long) -> Unit,
+    listState: LazyListState = rememberLazyListState()
 ) {
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        state = listState
     ) {
         items(books) { book ->
             BookItem(
