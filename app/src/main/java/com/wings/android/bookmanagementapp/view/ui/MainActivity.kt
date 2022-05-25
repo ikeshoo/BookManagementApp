@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
@@ -18,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -66,8 +68,11 @@ fun BookManagementApp() {
                     }
                 }
             ) }
-        ) {
-            BookShelfNavHost(navController = navController)
+        ) { innerPadding ->
+            BookShelfNavHost(
+                navController = navController,
+                modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())
+                )
         }
     }
 }

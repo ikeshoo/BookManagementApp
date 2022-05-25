@@ -1,9 +1,7 @@
 package com.wings.android.bookmanagementapp.view.ui
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -23,7 +21,7 @@ fun BookShelfNavHost(
     NavHost(
         navController = navController,
         startDestination = AppScreens.BookShelf.screenRoute,
-        modifier = modifier.padding(bottom = 48.dp)
+        modifier = modifier
     ) {
         composable(AppScreens.BookShelf.screenRoute) {
             BookShelfScreen(
